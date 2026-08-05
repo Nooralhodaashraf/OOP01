@@ -120,15 +120,144 @@ namespace Assignment01_OOP
 
             #region Part 002 Q5
             DeliveryCenter center = new DeliveryCenter();
-            Shipment shipment1 = new Shipment();
-            Shipment shipment2 = new Shipment();
+            //Shipment shipment1 = new Shipment();
+            //Shipment shipment2 = new Shipment();
 
-            center.AddShipment(shipment1);
-            center.AddShipment(shipment2);
+            //center.AddShipment(shipment1);
+            //center.AddShipment(shipment2);
 
-            Shipment first = center[0];
+            //Shipment first = center[0];
 
-            Shipment found = center["TRK001"];
+            //Shipment found = center["TRK001"];
+            #endregion
+
+            #region Q06
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine($" Enter Shipment {i + 1} Data =====");
+
+                string trackingCode;
+
+                do
+                {
+                    Console.Write("Tracking Code: ");
+                    trackingCode = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(trackingCode))
+                    {
+                        Console.WriteLine("Tracking Code cannot be empty.");
+                    }
+
+                } while (string.IsNullOrWhiteSpace(trackingCode));
+
+
+                // Description
+                string description;
+
+                do
+                {
+                    Console.Write("Description: ");
+                    description = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(description))
+                    {
+                        Console.WriteLine("Description cannot be empty.");
+                    }
+
+                } while (string.IsNullOrWhiteSpace(description));
+
+
+                // Weight
+                double weight;
+
+                do
+                {
+                    Console.Write("Weight: ");
+
+                } while (!double.TryParse(Console.ReadLine(), out weight)
+                         || weight <= 0);
+
+
+                // Delivery Fee
+                decimal deliveryFee;
+
+                do
+                {
+                    Console.Write("Delivery Fee: ");
+
+                } while (!decimal.TryParse(Console.ReadLine(), out deliveryFee)
+                         || deliveryFee <= 0);
+
+
+                // City
+                string shipmentCity;
+
+                do
+                {
+                    Console.Write("City: ");
+                    shipmentCity = Console.ReadLine();
+
+                } while (string.IsNullOrWhiteSpace(shipmentCity));
+
+
+                // Street
+                string shipmentStreet;
+
+                do
+                {
+                    Console.Write("Street: ");
+                    shipmentStreet = Console.ReadLine();
+
+                } while (string.IsNullOrWhiteSpace(shipmentStreet));
+
+
+                // Building Number
+                int shipmentBuildingNumber;
+
+                do
+                {
+                    Console.Write("Building Number: ");
+
+                } while (!int.TryParse(
+                             Console.ReadLine(),
+                             out shipmentBuildingNumber)
+                         || shipmentBuildingNumber <= 0);
+
+
+                // Create DeliveryAddress
+                DeliveryAddress shipmentAddress =
+                    new DeliveryAddress(
+                        shipmentCity,
+                        shipmentStreet,
+                        shipmentBuildingNumber);
+
+
+                // Create Shipment
+                Shipment shipment01 = new Shipment(
+                    trackingCode,
+                    description,
+                    weight,
+                    deliveryFee,
+                    shipmentAddress);
+
+
+                // Add Shipment
+                if (center.AddShipment(shipment01))
+                {
+                    Console.WriteLine("Shipment added successfully.");
+                }
+            }
+
+            Console.WriteLine("all shipments:"); for (int i = 0; i < 3; i++) 
+            { center[i].PrintShipment(city, street, buildingNumber); }
+            Console.WriteLine("Enter a tracking code to search: ");
+            string searchTrackingCode = Console.ReadLine();
+            Shipment found = center[searchTrackingCode];
+            if (!string.IsNullOrWhiteSpace(found.TrackingCode))
+            { Console.WriteLine($"Shipment found: {found.TrackingCode}" +
+                $" - {found.Description}"); } else { Console.WriteLine("Shipment not found."); 
+            }
+
             #endregion
 
 
