@@ -62,7 +62,7 @@ namespace Assignment01_OOP
 
             #region Part 002
             #region Smart Delivery Management System
-        
+
             DeliveryAddress address = new DeliveryAddress();
 
             Console.WriteLine("Please enter your Address:");
@@ -93,19 +93,46 @@ namespace Assignment01_OOP
             {
                 Console.WriteLine("Building Number:");
                 IsParsed = !int.TryParse(Console.ReadLine(), out buildingNumber);
-            } while (IsParsed || buildingNumber <= 0 );
+            } while (IsParsed || buildingNumber <= 0);
 
-           Console.WriteLine( address.GetFullAddress(city, street, buildingNumber));
-
-
-
-
-
-        
+            Console.WriteLine(address.GetFullAddress(city, street, buildingNumber));
 
 
             #endregion
+
+
+
+
+            Shipment shipment = new Shipment();
+            Console.WriteLine("Please enter your Shipment new Fee:");
+            shipment.UpdateDeliveryFee(decimal.Parse(Console.ReadLine()));
+            Console.Write("your updated delivery fee is:");
+
+            shipment.PrintShipment(city, street, buildingNumber);
+            Console.WriteLine(shipment.DeliveryFee);
+
+
+
+
+
             #endregion
-    }
+
+
+            #region Part 002 Q5
+            DeliveryCenter center = new DeliveryCenter();
+            Shipment shipment1 = new Shipment();
+            Shipment shipment2 = new Shipment();
+
+            center.AddShipment(shipment1);
+            center.AddShipment(shipment2);
+
+            Shipment first = center[0];
+
+            Shipment found = center["TRK001"];
+            #endregion
+
+
+
+        }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Assignment01_OOP
 {
-    internal struct DeliveryAddress
+    public struct DeliveryAddress
     {
 
         #region feilds
