@@ -54,11 +54,11 @@ namespace Assignment01_OOP
 
             #region b)
             //b)	b) How can private fields and public properties improve this design?
-
-
+            //Private fields and public properties can improve the design of the Shipment class by providing a way to encapsulate the data and control access to it. By making the fields private, we can prevent direct access to the data from outside the class, which helps to enforce encapsulation. Public properties can be used to provide controlled access to the data, allowing us to implement validation and error checking when setting or getting the values of the fields. This can help to ensure that the data is always in a valid state and prevent unexpected behavior in the program.
+            //look at the struct file for ex for it ...
             #endregion
             #endregion
             #endregion
-    }
+        }
     }
 }
