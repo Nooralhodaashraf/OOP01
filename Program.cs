@@ -42,11 +42,11 @@ namespace Assignment01_OOP
             #region Q002
             #region a)
             //a)	a) Identify at least three problems with this design from an encapsulation perspective.
-            //1- The fields are public, which means they can be accessed and modified directly from outside the class. This violates the principle of encapsulation, which states that the internal state of an object should be hidden from the outside world.
-            Shipment shipment = new Shipment();
-            shipment.Description = "Electronics";// The fields are public
-            shipment.Weight = 2.5;// can be accessed and modified directly from outside the class.
-            shipment.DeliveryFee = 30.0m;
+            ////1- The fields are public, which means they can be accessed and modified directly from outside the class. This violates the principle of encapsulation, which states that the internal state of an object should be hidden from the outside world.
+            //Shipment shipment = new Shipment();
+            //shipment.Description = "Electronics";// The fields are public
+            //shipment.Weight = 2.5;// can be accessed and modified directly from outside the class.
+            //shipment.DeliveryFee = 30.0m;
 
             //2- The class does not provide any methods to manipulate the data, which means that the data can only be accessed and modified directly. This makes it difficult to enforce any rules or constraints on the data.
             //3- The class does not provide any validation or error checking, which means that invalid data can be stored in the object. This can lead to unexpected behavior and bugs in the program.
@@ -59,6 +59,53 @@ namespace Assignment01_OOP
             #endregion
             #endregion
             #endregion
-        }
+
+            #region Part 002
+            #region Smart Delivery Management System
+        
+            DeliveryAddress address = new DeliveryAddress();
+
+            Console.WriteLine("Please enter your Address:");
+
+            bool IsParsed;
+
+            //City
+            string city;
+            do
+            {
+                Console.WriteLine("City:");
+                IsParsed = int.TryParse(city = Console.ReadLine(), out int cityName);
+
+            } while (IsParsed || string.IsNullOrWhiteSpace(city));
+
+            //Street
+            string street;
+            do
+            {
+                Console.WriteLine("Street:");
+                IsParsed = int.TryParse(street = Console.ReadLine(), out int streetName);
+
+            } while (IsParsed || string.IsNullOrWhiteSpace(street));
+
+            //Building Number
+            int buildingNumber;
+            do
+            {
+                Console.WriteLine("Building Number:");
+                IsParsed = !int.TryParse(Console.ReadLine(), out buildingNumber);
+            } while (IsParsed || buildingNumber <= 0 );
+
+           Console.WriteLine( address.GetFullAddress(city, street, buildingNumber));
+
+
+
+
+
+        
+
+
+            #endregion
+            #endregion
+    }
     }
 }
