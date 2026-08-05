@@ -1,9 +1,15 @@
-﻿namespace Assignment01_OOP
+﻿using System.Security.Principal;
+
+namespace Assignment01_OOP
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+
+            #region Part 001
+
+            #region Q001
             #region Part 001 Q01 a)
             //a)	 What happens when a DeliveryAddress variable is copied into another variable and the copy is modified?
             // it wont effect the original variable because it is a struct and structs are value types so it creates a new copy of the variable
@@ -31,6 +37,28 @@
             //Console.WriteLine(customer01.Name);//Ali
             #endregion
 
-        }
+            #endregion
+
+            #region Q002
+            #region a)
+            //a)	a) Identify at least three problems with this design from an encapsulation perspective.
+            //1- The fields are public, which means they can be accessed and modified directly from outside the class. This violates the principle of encapsulation, which states that the internal state of an object should be hidden from the outside world.
+            Shipment shipment = new Shipment();
+            shipment.Description = "Electronics";// The fields are public
+            shipment.Weight = 2.5;// can be accessed and modified directly from outside the class.
+            shipment.DeliveryFee = 30.0m;
+
+            //2- The class does not provide any methods to manipulate the data, which means that the data can only be accessed and modified directly. This makes it difficult to enforce any rules or constraints on the data.
+            //3- The class does not provide any validation or error checking, which means that invalid data can be stored in the object. This can lead to unexpected behavior and bugs in the program.
+            #endregion
+
+            #region b)
+            //b)	b) How can private fields and public properties improve this design?
+
+
+            #endregion
+            #endregion
+            #endregion
+    }
     }
 }
